@@ -98,29 +98,28 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-//    lazy var registerLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "У вас нет аккаунта? Зарегистрироваться."
-//        label.textColor = .systemGray
-//        label.font = UIFont.systemFont(ofSize: 14)
-//        label.textAlignment = .center
-//        label.layer.borderWidth = 0.3
-//        label.layer.borderColor = UIColor(red: 142/255, green: 142/255, blue: 142/255, alpha: 1).cgColor
-//        label.isUserInteractionEnabled = true
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(registerButtonTapped))
-//        label.addGestureRecognizer(tapGestureRecognizer)
-//
-//        return label
-//    }()
-    
     lazy var registerView: RegisterView = {
         let view = RegisterView()
         
-        view.addBorder(toSide: .Top, withColor: CGColor(srgbRed: 142/255, green: 142/255, blue: 142/255, alpha: 1), andThickness: 10)
+//        view.addBorder(toSide: .Top, withColor: CGColor(srgbRed: 142/255, green: 142/255, blue: 142/255, alpha: 1), andThickness: 10)
         return view
     }()
     
+    lazy var leftOrLineView: UIView = {
+        let view = UIView()
+        view.layer.borderWidth = 0.3
+        view.layer.borderColor = UIColor.systemGray.cgColor
+        return view
+    }()
     
+    lazy var rightOrLineView: UIView = {
+        let view = UIView()
+        view.layer.borderWidth = 0.3
+        view.layer.borderColor = UIColor.systemGray.cgColor
+        return view
+    }()
+    
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,8 +127,11 @@ class LoginViewController: UIViewController {
         setupViews()
     }
 
+    
     private func setupViews() {
-        let uiElements = [quitButton, iconImageView, loginTextField, passwordTextField, passwordRightButton, forgotPasswordButton, enterButton, orLabel, facebookLoginView, registerView]
+
+        let uiElements = [quitButton, iconImageView, loginTextField, passwordTextField, passwordRightButton, forgotPasswordButton, enterButton, orLabel, facebookLoginView, registerView, leftOrLineView, rightOrLineView]
+
         uiElements.forEach {
             self.view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -170,12 +172,23 @@ class LoginViewController: UIViewController {
         enterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         enterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        orLabel.topAnchor.constraint(equalTo: enterButton.bottomAnchor, constant: 30).isActive = true
+        leftOrLineView.topAnchor.constraint(equalTo: enterButton.bottomAnchor, constant: 30).isActive = true
+        leftOrLineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        leftOrLineView.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -30).isActive = true
+        leftOrLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
         orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        orLabel.centerYAnchor.constraint(equalTo: leftOrLineView.centerYAnchor).isActive = true
+        
+        rightOrLineView.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor).isActive = true
+        rightOrLineView.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 30).isActive = true
+        rightOrLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        rightOrLineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         
         facebookLoginView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 20).isActive = true
-        facebookLoginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
-        facebookLoginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+//        facebookLoginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
+//        facebookLoginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+        facebookLoginView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         facebookLoginView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         facebookLoginView.setParameters(imageName: "facebook logo", title: "Войти через Facebook")
         
@@ -184,6 +197,7 @@ class LoginViewController: UIViewController {
         registerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         registerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
+
     }
     
     @objc func changePasswordState() {
