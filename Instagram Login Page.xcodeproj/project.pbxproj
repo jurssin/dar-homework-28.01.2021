@@ -14,6 +14,7 @@
 		CE17B21E25C25A8900B29828 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE17B21C25C25A8900B29828 /* LaunchScreen.storyboard */; };
 		CE17B22625C274F000B29828 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17B22525C274F000B29828 /* Extensions.swift */; };
 		CEAC124325C29D800020B92D /* PrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC124225C29D800020B92D /* PrimaryView.swift */; };
+		CEAC124525C3116D0020B92D /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC124425C3116D0020B92D /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CE17B21F25C25A8900B29828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE17B22525C274F000B29828 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CEAC124225C29D800020B92D /* PrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryView.swift; sourceTree = "<group>"; };
+		CEAC124425C3116D0020B92D /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				CE17B21125C25A8700B29828 /* AppDelegate.swift */,
 				CE17B21325C25A8700B29828 /* SceneDelegate.swift */,
 				CE17B21525C25A8700B29828 /* LoginViewController.swift */,
+				CEAC124425C3116D0020B92D /* RegisterView.swift */,
 				CEAC124225C29D800020B92D /* PrimaryView.swift */,
 				CE17B21A25C25A8900B29828 /* Assets.xcassets */,
 				CE17B21C25C25A8900B29828 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 				CE17B21625C25A8700B29828 /* LoginViewController.swift in Sources */,
 				CE17B21225C25A8700B29828 /* AppDelegate.swift in Sources */,
 				CE17B21425C25A8700B29828 /* SceneDelegate.swift in Sources */,
+				CEAC124525C3116D0020B92D /* RegisterView.swift in Sources */,
 				CE17B22625C274F000B29828 /* Extensions.swift in Sources */,
 				CEAC124325C29D800020B92D /* PrimaryView.swift in Sources */,
 			);

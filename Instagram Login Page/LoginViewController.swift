@@ -34,6 +34,8 @@ class LoginViewController: UIViewController {
         textField.layer.borderColor = UIColor(red: 142/255, green: 142/255, blue: 142/255, alpha: 1).cgColor
         textField.layer.cornerRadius = 7
         textField.backgroundColor = UIColor(red: 250/255, green: 249/255, blue: 250/255, alpha: 1)
+        textField.autocapitalizationType = .none
+
         textField.setLeftPaddingPoints(15)
         textField.addTarget(self, action: #selector(setEnterButtonBackground), for: .editingChanged)
 
@@ -48,6 +50,7 @@ class LoginViewController: UIViewController {
         textField.layer.cornerRadius = 7
         textField.backgroundColor = UIColor(red: 250/255, green: 249/255, blue: 250/255, alpha: 1)
         textField.isSecureTextEntry = true
+        textField.autocapitalizationType = .none
         textField.setLeftPaddingPoints(15)
         textField.addTarget(self, action: #selector(setEnterButtonBackground), for: .allEditingEvents)
 
@@ -95,19 +98,26 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    lazy var registerLabel: UILabel = {
-        let label = UILabel()
-        label.text = "У вас нет аккаунта? Зарегистрироваться."
-        label.textColor = .systemGray
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textAlignment = .center
-        label.layer.borderWidth = 0.3
-        label.layer.borderColor = UIColor(red: 142/255, green: 142/255, blue: 142/255, alpha: 1).cgColor
-        label.isUserInteractionEnabled = true
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(registerButtonTapped))
-        label.addGestureRecognizer(tapGestureRecognizer)
+//    lazy var registerLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "У вас нет аккаунта? Зарегистрироваться."
+//        label.textColor = .systemGray
+//        label.font = UIFont.systemFont(ofSize: 14)
+//        label.textAlignment = .center
+//        label.layer.borderWidth = 0.3
+//        label.layer.borderColor = UIColor(red: 142/255, green: 142/255, blue: 142/255, alpha: 1).cgColor
+//        label.isUserInteractionEnabled = true
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(registerButtonTapped))
+//        label.addGestureRecognizer(tapGestureRecognizer)
+//
+//        return label
+//    }()
+    
+    lazy var registerView: RegisterView = {
+        let view = RegisterView()
         
-        return label
+        view.addBorder(toSide: .Top, withColor: CGColor(srgbRed: 142/255, green: 142/255, blue: 142/255, alpha: 1), andThickness: 10)
+        return view
     }()
     
     
@@ -119,7 +129,7 @@ class LoginViewController: UIViewController {
     }
 
     private func setupViews() {
-        let uiElements = [quitButton, iconImageView, loginTextField, passwordTextField, passwordRightButton, forgotPasswordButton, enterButton, orLabel, facebookLoginView, registerLabel]
+        let uiElements = [quitButton, iconImageView, loginTextField, passwordTextField, passwordRightButton, forgotPasswordButton, enterButton, orLabel, facebookLoginView, registerView]
         uiElements.forEach {
             self.view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -169,10 +179,11 @@ class LoginViewController: UIViewController {
         facebookLoginView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         facebookLoginView.setParameters(imageName: "facebook logo", title: "Войти через Facebook")
         
-        registerLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        registerLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        registerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        registerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        registerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        registerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        registerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        registerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
     }
     
     @objc func changePasswordState() {
