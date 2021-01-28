@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     var iconClick = true
-
+    var isTextFieldsEmpty = true
     
     lazy var quitButton: UIButton = {
         let button = UIButton()
@@ -35,6 +35,8 @@ class LoginViewController: UIViewController {
         textField.layer.cornerRadius = 7
         textField.backgroundColor = UIColor(red: 250/255, green: 249/255, blue: 250/255, alpha: 1)
         textField.setLeftPaddingPoints(15)
+        textField.addTarget(self, action: #selector(setEnterButtonBackground), for: .editingChanged)
+
         return textField
     }()
     
@@ -47,6 +49,8 @@ class LoginViewController: UIViewController {
         textField.backgroundColor = UIColor(red: 250/255, green: 249/255, blue: 250/255, alpha: 1)
         textField.isSecureTextEntry = true
         textField.setLeftPaddingPoints(15)
+        textField.addTarget(self, action: #selector(setEnterButtonBackground), for: .allEditingEvents)
+
         return textField
     }()
     
@@ -193,6 +197,7 @@ class LoginViewController: UIViewController {
     
     @objc func enterButtonPressed() {
         print(#function)
+        setEnterButtonBackground()
         guard let password = passwordTextField.text, let login = loginTextField.text else {
             return
         }
@@ -201,9 +206,6 @@ class LoginViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             present(alert, animated: true)
         }
-        
-        
-        
     }
     @objc func facebookLoginButtonTapped() {
         print(#function)
@@ -211,6 +213,19 @@ class LoginViewController: UIViewController {
     @objc func registerButtonTapped() {
         print(#function)
     }
-
+    
+    @objc func setEnterButtonBackground() {
+        guard let password = passwordTextField.text, let login = loginTextField.text else {
+            return
+        }
+        if(password.isEmpty && login.isEmpty) {
+            enterButton.backgroundColor = UIColor(red: 142/255, green: 200/255, blue: 245/255, alpha: 1)
+        }
+        else {
+            enterButton.backgroundColor = UIColor(red: 59/255, green: 149/255, blue: 238/255, alpha: 1)
+        }
+        
+        isTextFieldsEmpty = !isTextFieldsEmpty
+    }
 }
 
