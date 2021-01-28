@@ -93,12 +93,15 @@ class LoginViewController: UIViewController {
     
     lazy var registerLabel: UILabel = {
         let label = UILabel()
-        label.text = "У вас нет аккаунта?"
+        label.text = "У вас нет аккаунта? Зарегистрироваться."
         label.textColor = .systemGray
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .center
         label.layer.borderWidth = 0.3
         label.layer.borderColor = UIColor(red: 142/255, green: 142/255, blue: 142/255, alpha: 1).cgColor
+        label.isUserInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(registerButtonTapped))
+        label.addGestureRecognizer(tapGestureRecognizer)
         
         return label
     }()
@@ -203,6 +206,9 @@ class LoginViewController: UIViewController {
         
     }
     @objc func facebookLoginButtonTapped() {
+        print(#function)
+    }
+    @objc func registerButtonTapped() {
         print(#function)
     }
 
