@@ -142,12 +142,12 @@ class LoginViewController: UIViewController {
         quitButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         quitButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        iconImageView.topAnchor.constraint(equalTo: quitButton.bottomAnchor, constant: view.frame.height * 0.1).isActive = true
+        iconImageView.topAnchor.constraint(equalTo: quitButton.bottomAnchor, constant: view.frame.height * 0.05).isActive = true
         iconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         iconImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
         iconImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        loginTextField.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 40).isActive = true
+        loginTextField.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: view.frame.height * 0.02).isActive = true
         loginTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         loginTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         loginTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -185,7 +185,7 @@ class LoginViewController: UIViewController {
         rightOrLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         rightOrLineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         
-        facebookLoginView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 20).isActive = true
+        facebookLoginView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
 //        facebookLoginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
 //        facebookLoginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
         facebookLoginView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
